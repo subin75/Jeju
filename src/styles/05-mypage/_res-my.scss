@@ -1,0 +1,41 @@
+@media (max-width:768px){
+    .my-menu1{
+        .my-menuicon{width: 30px; height: 30px;}
+        .my-menuicon-like{width: 31px; height: 30px;}
+    }
+    .my-menu2{
+        .my-menu-trip{
+            .my-trip-num{
+                left: 55px; top: 49%;
+                transform: translate(55px, -49%);
+            }
+        }
+    }
+}
+
+@media (max-width:480px){
+    .my-login{
+        > p{font-size: 18px;}
+    }
+    .my-menu1{
+        column-gap: 35px;
+        span{font-size: 16px;}
+    }
+    .my-menu2{
+        .my-menu-trip, .my-menu-help{
+            >a, b{font-size: 14px;}
+            >p{font-size: 12px;}
+        }
+        .my-menu-trip{
+            .my-trip-num{
+                left: 48px; top: 49%;
+                transform: translate(48px, -49%);
+                font-size: 14px;
+            }
+        }
+        .my-menu-help{
+            span{font-size: 14px;}
+        }
+    }
+    .my-login-out{font-size: 12px;}
+}

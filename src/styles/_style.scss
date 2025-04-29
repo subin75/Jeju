@@ -1,0 +1,756 @@
+@import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{box-sizing: border-box; padding:0; margin: 0; word-break: keep-all;} 
+html{font-size: 14px; color: #333; background-color: #eee;
+    scrollbar-width: none; /* Firefox */
+} 
+body{ 
+    // user-select: none; 
+    // -webkit-user-select: none;
+    -ms-overflow-style: none; /* IE 10+ */
+    -webkit-tap-highlight-color: transparent;
+    margin: 0 auto; padding: 0 38px;
+    width: 768px; min-height: 100vh;
+    font-family:'NanumSquare';
+    background-color: white;
+}
+body::-webkit-scrollbar {display: none; /* Chrome, Safari, Opera */}
+h1,h2,h3,h4,h5,p,figure{margin: 0; padding: 0;}
+ol,ul,li{list-style: none; margin: 0; padding:0;}
+button{
+    border: 0; margin: 0; padding: 0; background-color: transparent; 
+    font-family: "NanumSquare";
+    color: #333;
+}
+img{border: 0; vertical-align: middle; object-fit: cover;}
+a{text-decoration: none; color: #333;}
+input, textarea{
+    border:0;
+    font-family: "NanumSquare";
+    color: #333;
+}
+::before,::after{margin:0; padding: 0; box-sizing: border-box;}
+
+
+//태그모양
+.tagbtn{
+    display: inline-block;
+    padding: 7px 11px;
+    border: 1px solid #5886BA;
+    border-radius: 85px;
+    margin-right: 10px;
+}
+input:checked + .tagbtn{
+    display: inline-block;
+    padding: 7px 11px;
+    color: white;
+    border: 1px solid #5886BA;
+    background-color: #5886BA;
+    border-radius: 85px;
+}
+
+//버튼
+.btn{
+    background-color: white;
+    border: 1px solid #333;
+    border-radius: 7px;
+    padding: 12px 0;
+    text-align: center;
+}
+
+//밀기 애니메이션
+.swipe{
+    position: relative; 
+    .path { 
+    width: 20px; 
+    height: 20px; 
+    position: absolute; 
+    background: rgba(149, 147, 241, 0.5); 
+    border-radius: 40px;
+    top: -7px; 
+    left: 25px;
+    visibility: hidden; 
+    }  
+    .hand-icon { 
+    background-image: url('../../public/imgs/click-hand.svg'); 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    width: 40px;
+    height: 44px;  
+    transform-origin: 52% 62%; 
+    }  
+}
+
+//밀어서 삭제 쓰레기통 아이콘
+.swiperitem{
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    overflow: hidden;
+    
+    .swiperlist{
+        width: 100%;
+        height: 72px;
+    }
+}
+
+//밀어서 삭제
+.swipe-container{
+    position: relative;
+    .children{
+        width: 100%;
+    }
+    .trashicon{
+        width: 80px;
+        height: 100%;
+        background: #FF0000;
+        position: absolute;
+        top: 0; right: -80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@keyframes swipe-hand { 
+    25% { 
+        transform: translate(20px) rotate(30deg); 
+    } 50% {
+        transform: translate(-20px) rotate(-15deg); 
+    } 100% { 
+        transform: translate(0px) rotate(0);
+    } 
+}  
+
+@keyframes swipe-dot { 
+    12% { 
+        visibility: visible; width: 40px; 
+    } 25% { 
+        visibility: visible; 
+        transform: translate(-65px); 
+        width: 20px; 
+    } 26% { 
+        visibility: hidden; 
+    } 
+}
+.weathertemp{
+    span::after{
+        content: '° ';
+    }
+    span:nth-of-type(2)::before{
+        content: ' / ';
+    }
+}
+
+// Nodata
+.NoWriteReply {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+
+    .smileIcon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 1rem;
+    }
+    b {
+        font-size: 18px;
+        margin-bottom: 7px;
+    }
+    span {
+        font-size: 12px;
+        color: #555;
+    }
+}
+.NoLikePlace {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+
+    .heartBrokenIcon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 1rem;
+    }
+    b {
+        font-size: 18px;
+        margin-bottom: 7px;
+    }
+    span {
+        font-size: 12px;
+        color: #555;
+    }
+}
+.NoWritePost {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+
+    .smileIcon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 1rem;
+    }
+    b {
+        font-size: 18px;
+        margin-bottom: 7px;
+    }
+    span {
+        font-size: 12px;
+        color: #555;
+    }
+}
+.NoLikePost {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+
+    .heartBrokenIcon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 1rem;
+    }
+    b {
+        font-size: 18px;
+        margin-bottom: 7px;
+    }
+    span {
+        font-size: 12px;
+        color: #555;
+    }
+}
+.NoSearch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+
+    .smileIcon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 1rem;
+    }
+    b {
+        font-size:  18px;
+        margin-bottom: 7px;
+    }
+}
+
+// toggle
+.toggle{
+    width: 100%;
+    padding: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    > b{font-size: 18px;}
+}
+.toggle-icon{
+    width: 18px; height: 10px;
+    img{width: 100%; height: 100%;}
+}
+
+.NoPlan {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+
+    .smileIcon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 1rem;
+    }
+    b {
+        font-size:  18px;
+        margin-bottom: 7px;
+    }
+}
+
+// tab
+.tab-maintitle{
+    text-align: center;
+    font-size: 26px;
+    margin: 50px 0;
+}
+.tabmenu{
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.3);
+    > div{
+        width: 50%;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        &.active{
+            color: #333;
+            border-bottom: 1px solid #333;
+        }
+    }
+}
+.tabitem{
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    > p{
+        flex-shrink: 0; // 이미지 크기 유지
+        width: 157px; height: 116px;
+        img{width: 100%; height: 100%; border-radius: 10px;}
+    }
+    > div{
+        flex: 1; // 남은 공간 차지
+        min-width: 0; // 텍스트 줄바꿈
+        word-break: break-all;
+        p{font-size: 18px; font-weight: bold; margin-bottom: 7px;}
+        span{font-size: 14px; color: rgba(0, 0, 0, 0.3);}
+    }
+}
+
+// list
+.listitem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 16px 0;
+    cursor: pointer;
+    > div{
+        p{font-size: 18px; font-weight: bold; margin-bottom: 7px;}
+        span{font-size: 14px; color: rgba(0, 0, 0, 0.3);}
+    }
+}
+.listitem-icon{
+    width: 10px; height: 18px;
+    margin-right: 7px;
+    > img{width: 100%; height: 100%;}
+}
+.listpage{
+    h2{
+        margin: 50px 0;
+        text-align: center;
+        font-size: 26px;
+    }
+    .listpage-swipehand-wrap{
+        position: relative;
+        
+        .listpage-swipehand{
+            position: absolute;
+            right: 9%; bottom: -225%;
+            transform: translate(-9%, 225%);
+        }
+        
+    }
+    .listpage-year{
+        margin-bottom: 44px;
+        >h3{
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        > div:last-of-type .listitem{
+            &:last-child{border-bottom: none;}
+        }
+    }
+    .listpage-loading{
+        margin: 120px auto;
+        width: 300px;
+    }
+}
+
+// popup
+.popup-box, .popup-box-burger{
+    position: fixed;
+    width: 100vw; height: 100vh;
+    left: 0; top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+.popup-box-burger{width: 768px !important;}
+.popup, .closepopup{
+    min-width: 320px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+.popup{
+    padding: 30px;
+    .popup-cont{
+        display: flex;
+        gap: 16px;
+        font-size: 16px; 
+        p{
+            white-space: pre-line;
+            span{
+                display: block;
+                color: rgba(0, 0, 0, 0.3);
+                margin-top: 10px;
+            }
+        }
+    }
+    .popup-warningicon{
+        width: 28px;
+        >img{width: 100%;}
+    }
+    .popup-callicon{
+        width: 28px;
+        >img{width: 100%;}
+    }
+}
+.closepopup{
+    .popup-title{
+        position: relative;
+        padding: 16px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .popup-closeicon{
+        width: 15px;
+        >img{width: 100%;}
+        position: absolute;
+        right: 4%; top: 50%;
+        transform: translate(-4%, -50%);
+        cursor: pointer;
+    }
+    .popup-cont{
+        padding: 16px;
+        font-size: 16px;
+        .no-select-btn{
+            color: rgba(0, 0, 0, 0.3);
+            text-decoration: underline;
+            display: block;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    }
+}
+.closepopup-btns-box, .popup-btns-box{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 7px;
+}
+.popup-btns-box{
+    margin-top: 32px;
+}
+.closepopup-btns-box{
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 16px;
+}
+.btn1popup-btn, .btn2popup-btn{
+    padding: 10px 17px;
+    border-radius: 7px;
+    border: 1px solid #5886BA;
+    font-size: 16px;
+    cursor: pointer;
+}
+.btn1popup-btn{
+    background-color: #5886BA;
+    color: white;
+}
+.btn2popup-btn{
+    background-color: white;
+    color: #5886BA;
+}
+//Header
+.header{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  background-color: white;
+  position: fixed;
+  left: 50%; top: 0;
+  transform: translate(-50%, 0);
+  width: 768px; height: 91.33px;
+  padding: 45px 38px 13px;
+  z-index: 9998;
+  h2{
+    >img{width: 135px;}
+  }
+}
+.header-back{
+  >img{width: 14px;}
+}
+.header-rig{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5px;
+  .header-search{
+    img{width: 16px;}
+  }
+  .header-list{
+    padding-left: 17px;
+    img{width: 23.5px;}
+  }
+}
+
+//MoreBtn
+.morebtn{
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  b{
+    font-size: 14px;
+    padding-right: 8px;
+  }
+}
+.morebtn-icon{
+  img{
+    display: inline-block;
+    width: 8px;
+    padding-bottom: 1px;
+  }
+}
+
+//Menu
+.bottom-menu{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 40px 0;
+  background-color: #fff;
+  position: fixed;
+  left: 50%; bottom: 0;
+  transform: translateX(-50%);
+  width: 768px;
+  z-index: 999;
+}
+
+//SearchBar
+.searchbar{
+  width: 100%;
+  height: 40px;
+  border: 1px solid #333;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  .search-back{
+    padding-left: 13px;
+    cursor: pointer;
+    >img{width: 6px; height: 12px;}
+  }
+  input{
+    width: 90%;
+    height: 100%;
+    border-radius: 10px;
+    padding-left: 9px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
+}
+
+// LikeRed
+.heart-fill-red, .heart-stroke-red{
+    width: 25px; height: 22px;
+    >img{width: 100%; height: 100%;}
+}
+
+// LikeWhite
+.heart-fill-white, .heart-stroke-white{
+    width: 25px; height: 22px;
+    >img{width: 100%; height: 100%;}
+}
+
+// PlaceItem
+.place{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    .place-img-txt{
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        .place-img{
+            width: 157px;
+            height: 116px;
+            margin-right: 13px;
+            >img{
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            }
+        }
+        .place-txt{
+            width: 400px;
+            flex-shrink: 0;
+            >h2{
+                font-size: 18px;
+                font-weight: bold;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100%; // 너비 제한 필수
+            }
+            >p{
+                font-size: 16px;
+                padding-top: 5px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2; /* 두 줄까지 표시 */
+                -webkit-box-orient: vertical;
+            }
+            .place-tag{
+                padding-top: 5px;
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                >span{
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+// burgermenu
+.burger-rel{
+    width: 768px;
+    height: 100vh;
+    position: fixed;
+    left: 0; top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    z-index: 1000;
+    .burger{
+        width: 100%;
+        height: 100vh;
+        background-color:#FFFAF4;
+        padding: 59px 38px 131px;
+    }
+    &.active{
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+}
+.bug-close{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 71px;
+    .bugclose-btn{
+        width: 14.6px; height: 14.6px;
+        img{width: 100%; height: 100%; color: #333;}
+    }
+}
+.bug-menu{
+    .bugbtn{
+        padding-bottom: 50px;
+        cursor: pointer;
+        a{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            span{
+                font-size: 20px;
+                font-weight: bold;
+                color: #2449A4;
+            }
+            .bugarrow{width: 9px; height: 18px; margin-bottom: 5px;}
+        }
+    }
+}
+.bugbtn{
+    padding-bottom: 50px;
+    cursor: pointer;
+    .bugbus{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        span{
+            font-size: 20px;
+            font-weight: bold;
+            color: #2449A4;
+        }
+        .bugarrow{width: 9px; height: 18px; margin-bottom: 5px;}
+    }
+}
+.bug-login{
+    padding-top: 30px;
+    a, span{
+        font-size: 12px;
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        border-bottom: 0.3px solid rgba(0, 0, 0, 0.3);
+    }
+}
+
+.heartnumred,.heartnumwhite{
+    display: flex;
+    gap: 3px;
+    align-items: baseline;
+    p{
+        color: #333333;
+        font-size: 14px;
+        font-weight: bold;
+    }
+}
+
+//Top버튼
+.top-btn-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    .top-btn{
+        z-index: 999;
+        position: fixed;
+        bottom: 13%; right: calc((100vw - 768px) / 2 + 34px); // 화면 너비에서 가운데 정렬 + 우측 위치 조정
+        transform: translate(-13%, -4%);    
+        >img{
+            width: 40px; height: 40px;
+        }
+    }
+}
+.add-check-btn-wrap{
+    position: relative;
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+        .add-check-btn{
+        z-index: 999;
+        position: fixed;
+        bottom: 13%; right: calc((100vw - 768px) / 2 + 34px); // 화면 너비에서 가운데 정렬 + 우측 위치 조정
+        transform: translate(-13%, -4%);
+            >img{
+            width: 50px; height: 50px;
+            }
+            cursor: pointer;
+            }
+    }
+
+
+@import './res-style.scss';
