@@ -234,9 +234,9 @@ https://jeju-trip-eosin.vercel.app/
     
       ⇒ **해결방법**: const res = await fetch(`${process.env.REACT_APP_APIURL}/like/user-liked?userId=${userId}`);<br>
                        const data = await res.json();<br>
-                       let hasVote = data.likedPostIds.includes(item._id) 추가하여서 게시글에 유저가 좋아요를 눌렀는지 여부를 판별하여 하트색깔이 들어오게 함
+                       let hasVote = data.likedPostIds.includes(item._id) 추가하여 게시글에 유저가 좋아요를 눌렀는지 여부를 판별하여 하트색깔이 들어오게 함
 
 5. 이미지가 없는 게시물도 불러와서 이슈 발생
 
-      ⇒ **해결방법**: .filter(post => post.imageUrls && post.imageUrls[0]) 추가하여서 이미지가 null값인 것은 제외
+      ⇒ **해결방법**: .filter(post => post.imageUrls && post.imageUrls[0]) 추가하여 이미지가 null값인 것은 제외
 
