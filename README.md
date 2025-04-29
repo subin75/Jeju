@@ -219,26 +219,24 @@ https://jeju-trip-eosin.vercel.app/
 ### 📌 커뮤니티.html
 
  1. 처음에는 단일 이미지로 올라갈 수 있게 코딩을 짜놓아서, 최대 4장까지 올라갈 수 있게 하기 위해 수정하는 과정에서 이슈 발생
-       
-       ⇒ **해결방법**: 단일 이미지였던 것을 다중이미지로 바꾸면서 imageUrl에서 imageUrls로 바꾸고,
-                        const formData = new FormData();
-                        images.forEach(img => formData.append('images', img));
-                        await axios.post('/api/post/images', formData
+    
+       ⇒ **해결방법**: 단일 이미지였던 것을 다중이미지로 바꾸면서 imageUrl에서 imageUrls로 바꾸고,<br>
+                        const formData = new FormData();<br>
+                        images.forEach(img => formData.append('images', img));<br>
+                        await axios.post('/api/post/images', formData<br>
                         FormData를 이미지 배열로 되게 변경
 
- 2. 게시물리스트에서는 하트색깔이 변경되는데 게시물디테일에서는 데이터는 넘어가는데 하트색깔이 변경되지 않는 이슈 발생
+ 3. 게시물리스트에서는 하트색깔이 변경되는데 게시물디테일에서는 데이터는 넘어가는데 하트색깔이 변경되지 않는 이슈 발생
  
       ⇒ **해결방법**: localStorage.post = JSON.stringify(updatedPost) localStorage의 post 파일에 있는 hasvote과 연결하여 true이면 하트색깔이 들어오고 false면 하트색깔이 안 들어오게 함
 
- 3. 이미지를 누르면 해당 게시물로 이동하는데 거기서 좋아요를 누르면 서버로는 넘어가는데 하트색깔이 들어왔다가 초기화되는 이슈 발생
- 
-     * 기존 코드에서는 객체의 index값을 반복하는 filter와 break로 하나의 값만 찾고 반복문에서 탈출
+ 4. 이미지를 누르면 해당 게시물로 이동하는데 거기서 좋아요를 누르면 서버로는 넘어가는데 하트색깔이 들어왔다가 초기화되는 이슈 발생
     
-      ⇒ **해결방법**: const res = await fetch(`${process.env.REACT_APP_APIURL}/like/user-liked?userId=${userId}`);
-                       const data = await res.json();
+      ⇒ **해결방법**: const res = await fetch(`${process.env.REACT_APP_APIURL}/like/user-liked?userId=${userId}`);<br>
+                       const data = await res.json();<br>
                        let hasVote = data.likedPostIds.includes(item._id) 추가하여서 게시글에 유저가 좋아요를 눌렀는지 여부를 판별하여 하트색깔이 들어오게 함
 
-4. 이미지가 없는 게시물도 불러와서 이슈 발생
+5. 이미지가 없는 게시물도 불러와서 이슈 발생
 
       ⇒ **해결방법**: .filter(post => post.imageUrls && post.imageUrls[0]) 추가하여서 이미지가 null값인 것은 제외
 
