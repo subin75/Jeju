@@ -198,23 +198,25 @@ https://jeju-trip-eosin.vercel.app/
 * 담당 - 커뮤니티
 * 담당 컴포넌트 상세
   
+  ```
   ┃ ┃ ┃ ┣ 📂03-community
-┃ ┃ ┃ ┃ ┣ 📂comment           # 댓글 컴포넌트 폴더
-┃ ┃ ┃ ┃ ┃  ┗ 📜CmCommnet.jsx  
-┃ ┃ ┃ ┃ ┣ 📂img               # 갤러리 컴포넌트 폴더
-┃ ┃ ┃ ┃ ┃  ┗ 📜CmSlideImg.jsx
-┃ ┃ ┃ ┃ ┃  ┗ 📜CmUploadImg.jsx 
-┃ ┃ ┃ ┃ ┗ 📂post              # 게시물 컴포넌트 폴더
-┃ ┃ ┃ ┃ ┃  ┗ 📜CmEditPost.jsx
-┃ ┃ ┃ ┃ ┃  ┗ 📜CmNewPost.jsx
-┃ ┃ ┃ ┃ ┗ 📜CmDeleteBtn.jsx
-┃ ┃ ┃ ┃ ┗ 📜CmDetail.jsx
-┃ ┃ ┃ ┃ ┗ 📜CmFeedList.jsx
-┃ ┃ ┃ ┃ ┗ 📜CmSubject.jsx
+  ┃ ┃ ┃ ┃ ┣ 📂comment           # 댓글 컴포넌트 폴더
+  ┃ ┃ ┃ ┃ ┃  ┗ 📜CmCommnet.jsx  
+  ┃ ┃ ┃ ┃ ┣ 📂img               # 갤러리 컴포넌트 폴더
+  ┃ ┃ ┃ ┃ ┃  ┗ 📜CmSlideImg.jsx
+  ┃ ┃ ┃ ┃ ┃  ┗ 📜CmUploadImg.jsx 
+  ┃ ┃ ┃ ┃ ┗ 📂post              # 게시물 컴포넌트 폴더
+  ┃ ┃ ┃ ┃ ┃  ┗ 📜CmEditPost.jsx
+  ┃ ┃ ┃ ┃ ┃  ┗ 📜CmNewPost.jsx
+  ┃ ┃ ┃ ┃ ┗ 📜CmDeleteBtn.jsx
+  ┃ ┃ ┃ ┃ ┗ 📜CmDetail.jsx
+  ┃ ┃ ┃ ┃ ┗ 📜CmFeedList.jsx
+  ┃ ┃ ┃ ┃ ┗ 📜CmSubject.jsx
+  ```
   
 ## 💥 트러블 슈팅
 
-### 📌 예약하기.html
+### 📌 커뮤니티.html
 
  1. 처음에는 단일 이미지로 올라갈 수 있게 코딩을 짜놓아서, 최대 4장까지 올라갈 수 있게 하기 위해 수정하는 과정에서 이슈 발생
        
