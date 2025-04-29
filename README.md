@@ -190,49 +190,53 @@ https://jeju-trip-eosin.vercel.app/
 | **Vercel** | **서버리스 플랫폼** |![vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)|
 | **Figma** | **디자인 & UI/UX**|![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=Figma&logoColor=white) |
 
-( 각자 개인 배포 후 밑에서부터는 각자 담당하신 내용에 대해 좀 더 세세하게? 적는 부분 입니다 ! <br>
-트러블 슈팅은 꼭 들어있어야 하고 그 외 기재 안하실 분들은 지워주시면 됩니다~ 다들 고생하셨습니다 ! !)
 <hr>
 
-# OOO의 개발 상세
+# 황수빈의 개발 상세
 
 ## 📑 요약
-* 담당
+* 담당 - 커뮤니티
 * 담당 컴포넌트 상세
-
-## 🧩 공통 컴포넌트 제작
-* 📜.jsx
-
+  
+  ┃ ┃ ┃ ┣ 📂03-community
+┃ ┃ ┃ ┃ ┣ 📂comment           # 댓글 컴포넌트 폴더
+┃ ┃ ┃ ┃ ┃  ┗ 📜CmCommnet.jsx  
+┃ ┃ ┃ ┃ ┣ 📂img               # 갤러리 컴포넌트 폴더
+┃ ┃ ┃ ┃ ┃  ┗ 📜CmSlideImg.jsx
+┃ ┃ ┃ ┃ ┃  ┗ 📜CmUploadImg.jsx 
+┃ ┃ ┃ ┃ ┗ 📂post              # 게시물 컴포넌트 폴더
+┃ ┃ ┃ ┃ ┃  ┗ 📜CmEditPost.jsx
+┃ ┃ ┃ ┃ ┃  ┗ 📜CmNewPost.jsx
+┃ ┃ ┃ ┃ ┗ 📜CmDeleteBtn.jsx
+┃ ┃ ┃ ┃ ┗ 📜CmDetail.jsx
+┃ ┃ ┃ ┃ ┗ 📜CmFeedList.jsx
+┃ ┃ ┃ ┃ ┗ 📜CmSubject.jsx
   
 ## 💥 트러블 슈팅
 
 ### 📌 예약하기.html
 
- 1. 과거 날짜와 예약이 완료된 날짜 모두 드래그가 가능한 이슈 발생
-  
-     * 예약이 완료된 날짜
+ 1. 처음에는 단일 이미지로 올라갈 수 있게 코딩을 짜놓아서, 최대 4장까지 올라갈 수 있게 하기 위해 수정하는 과정에서 이슈 발생
        
-       ⇒ **해결방법**: fullcalendar의 datesSet : 모든 데이터의 날짜를 가져와 while문으로 입실 날짜, 퇴실의 전날까지의 날짜를 회색으로 표현<br>
-       ⇒ **해결방법**: fullcalendar의 selectAllow : backgroundColor가 #CCC 일때 클릭 불가
+       ⇒ **해결방법**: 단일 이미지였던 것을 다중이미지로 바꾸면서 imageUrl에서 imageUrls로 바꾸고,
+                        const formData = new FormData();
+                        images.forEach(img => formData.append('images', img));
+                        await axios.post('/api/post/images', formData
+                        FormData를 이미지 배열로 되게 변경
 
-     * 과거 날짜
-         
-       ⇒ **해결방법**: fullcalendar의 selectAllow : if문으로 오늘 날짜보다 적을 때 클릭 불가 
-
- 2. newDate()로 변경 시, 표준시간대(UTC) 기준으로 설정되어 한국 날짜와 9시간 차이나는 이슈
+ 2. 게시물리스트에서는 하트색깔이 변경되는데 게시물디테일에서는 데이터는 넘어가는데 하트색깔이 변경되지 않는 이슈 발생
  
-      ⇒ **해결방법**: 현재 브라우저의 로컬 시간대 기준으로 정오(12:00) 시간을 설정해줄 수 있는 setHours(12, 0, 0, 0) 메서드를 사용
+      ⇒ **해결방법**: localStorage.post = JSON.stringify(updatedPost) localStorage의 post 파일에 있는 hasvote과 연결하여 true이면 하트색깔이 들어오고 false면 하트색깔이 안 들어오게 함
 
- 3. 이름, 전화번호가 동일한 예약정보가 2개 이상일 때, 하나의 예약정보만 보여지는 이슈 발생
+ 3. 이미지를 누르면 해당 게시물로 이동하는데 거기서 좋아요를 누르면 서버로는 넘어가는데 하트색깔이 들어왔다가 초기화되는 이슈 발생
  
      * 기존 코드에서는 객체의 index값을 반복하는 filter와 break로 하나의 값만 찾고 반복문에서 탈출
     
-      ⇒ **해결방법**: forEach, push를 사용하여 객체의 index값을 반복하여 이름, 전화번호가 동일한 정보를 모두 let a = [] 변수에 담아둠<br>
-     또한 2개 이상의 예약 정보가 확인 될 때 createElement() 메서드를 사용하여 첫 번째 내역의 태그와 동일하게 태그를 생성
+      ⇒ **해결방법**: const res = await fetch(`${process.env.REACT_APP_APIURL}/like/user-liked?userId=${userId}`);
+                       const data = await res.json();
+                       let hasVote = data.likedPostIds.includes(item._id) 추가하여서 게시글에 유저가 좋아요를 눌렀는지 여부를 판별하여 하트색깔이 들어오게 함
 
-4. 예약 정보가 2개 이상 확인 될 때 원하는 예약을 삭제하지 못하는 이슈 발생
+4. 이미지가 없는 게시물도 불러와서 이슈 발생
 
-      ⇒ **해결방법**: 예약정보 마다 ```<input type="checkbox">``` 생성<br>
-        checked 된 예약정보에 대해 for~in문, filter을 사용하여 특정 조건 (호실, 입실 날짜, 퇴실 날짜가 동일하지 않은 경우) 으로 필터링<br>
-        필터링된 데이터를 다시 Local Storage에 저장
+      ⇒ **해결방법**: .filter(post => post.imageUrls && post.imageUrls[0]) 추가하여서 이미지가 null값인 것은 제외
 
